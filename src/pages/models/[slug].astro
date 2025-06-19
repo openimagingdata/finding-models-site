@@ -1,6 +1,13 @@
 ---
 import { Astro } from 'astro';
-import { getModelBySlug } from '../../data/loadFindingModels';
+import { getModelBySlug, getAllModels } from '../../data/loadFindingModels';
+
+// Pre-render all dynamic model pages
+export function getStaticPaths() {
+  return getAllModels().map((model) => ({
+    params: { slug: model.slug },
+  }));
+}
 
 const { slug } = Astro.params;
 const model = getModelBySlug(slug);
