@@ -1,0 +1,3 @@
+[submodule "external/findingmodels"]
+	path = external/findingmodels
+	url = https://github.com/openimagingdata/findingmodels.git
