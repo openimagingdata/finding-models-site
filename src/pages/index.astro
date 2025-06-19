@@ -1,6 +1,6 @@
----
-import { getAllModels } from '../data/loadFindingModels';
-const models = getAllModels().slice(0, 5);
+--- 
+import { getAllModels } from '../../data/loadFindingModels';
+const models = getAllModels();
 ---
 
 <html lang="en">
@@ -9,11 +9,10 @@ const models = getAllModels().slice(0, 5);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Finding Models</title>
+    <title>All Models</title>
   </head>
   <body>
-    <h1>Finding Models</h1>
-    <p>This site hosts a searchable, structured index of radiology finding models.</p>
+    <h1>All Models</h1>
     <ul>
       {models.map(model => (
         <li>
@@ -21,16 +20,6 @@ const models = getAllModels().slice(0, 5);
         </li>
       ))}
     </ul>
-    <p><a href="/models/">Browse All Models</a></p>
-    <p>
-      <a href="https://github.com/openimagingdata/findingmodels/issues/new">
-        Submit an Issue to Propose a Change
-      </a>
-    </p>
-    <p>
-      <a href="https://forge.findingmodels.org">
-        Launch Finding Model Forge
-      </a>
-    </p>
+    <p><a href="/">Back to Home</a></p>
   </body>
 </html>

@@ -1,5 +1,5 @@
 ---
-import { getAllModels } from '../../data/loadFindingModels';
+import { getAllModels } from '../data/loadFindingModels';
 const models = getAllModels();
 ---
 
@@ -7,18 +7,16 @@ const models = getAllModels();
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Finding Models</title>
+    <title>Finding Models Home</title>
   </head>
   <body>
-    <h1>All Finding Models</h1>
-    <p>{models.length} models found.</p>
+    <h1>Welcome to Finding Models</h1>
     <ul>
-      {models.map((model) => (
+      {models.map(model => (
         <li>
           <a href={`/models/${model.slug}/`}>{model.name ?? model.slug}</a>
         </li>
       ))}
     </ul>
-    <p><a href="/">Back to Home</a></p>
   </body>
 </html>
