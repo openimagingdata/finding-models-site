@@ -1,0 +1,36 @@
+---
+import { Astro } from 'astro';
+import { getModelBySlug } from '../../data/loadFindingModels';
+
+const { slug } = Astro.params;
+const model = getModelBySlug(slug);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{model.name ?? slug}</title>
+  </head>
+  <body>
+    <h1>{model.name ?? slug}</h1>
+
+    <h2>Model Summary</h2>
+    <ul>
+      {Object.entries(model).map(([key, value]) => (
+        <li><strong>{key}:</strong> {typeof value === 'object' ? JSON.stringify(value) : String(value)}</li>
+      ))}
+    </ul>
+
+    <h2>Raw JSON</h2>
+    <pre>{JSON.stringify(model, null, 2)}</pre>
+
+    <p>
+      <a href={`https://github.com/openimagingdata/findingmodels/issues/new?title=Change+Request:+${slug}&body=Please+describe+the+requested+change+for+%2Fschema%2F${slug}.json`}>
+        Propose Change on GitHub
+      </a>
+    </p>
+
+    <p><a href="/models">Back to All Models</a></p>
+  </body>
+</html>

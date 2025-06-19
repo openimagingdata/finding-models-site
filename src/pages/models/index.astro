@@ -1,0 +1,24 @@
+---
+import { getAllModels } from '../../data/loadFindingModels';
+const models = getAllModels();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Finding Models</title>
+  </head>
+  <body>
+    <h1>All Finding Models</h1>
+    <p>{models.length} models found.</p>
+    <ul>
+      {models.map((model) => (
+        <li>
+          <a href={`/models/${model.slug}/`}>{model.name ?? model.slug}</a>
+        </li>
+      ))}
+    </ul>
+    <p><a href="/">Back to Home</a></p>
+  </body>
+</html>
