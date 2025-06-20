@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const modelDir = path.resolve('./external/findingmodels/schema');
+const modelDir = path.resolve('./external/findingmodels/defs');
 
 export function getAllModels() {
   return fs.readdirSync(modelDir)

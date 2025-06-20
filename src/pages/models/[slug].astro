@@ -1,43 +1,47 @@
 ---
-import { Astro } from 'astro';
+import BaseLayout from '../../layouts/Layout.astro';
 import { getModelBySlug, getAllModels } from '../../data/loadFindingModels';
 
-// Pre-render all dynamic model pages
 export function getStaticPaths() {
-  return getAllModels().map((model) => ({
+  return getAllModels().map(model => ({
     params: { slug: model.slug },
   }));
 }
 
-const { slug } = Astro.params;
+const { slug } = Astro.params as { slug: string };
 const model = getModelBySlug(slug);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{model.name ?? slug}</title>
-  </head>
-  <body>
-    <h1>{model.name ?? slug}</h1>
+<BaseLayout>
+  <article class="prose max-w-none py-8 dark:prose-invert">
+    <h1>{model.name}</h1>
+    {model.description && <p>{model.description}</p>}
 
-    <h2>Model Summary</h2>
-    <ul>
-      {Object.entries(model).map(([key, value]) => (
-        <li><strong>{key}:</strong> {typeof value === 'object' ? JSON.stringify(value) : String(value)}</li>
-      ))}
-    </ul>
+    <h2>Fields</h2>
+    {model.fields && model.fields.length > 0 ? (
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <thead>
+          <tr>
+            <th>Name</th><th>Type</th><th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {model.fields.map(f => (
+            <tr>
+              <td>{f.name}</td>
+              <td>{f.type}</td>
+              <td>{f.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p>No fields defined.</p>
+    )}
 
-    <h2>Raw JSON</h2>
-    <pre>{JSON.stringify(model, null, 2)}</pre>
-
-    <p>
-      <a href={`https://github.com/openimagingdata/findingmodels/issues/new?title=Change+Request:+${slug}&body=Please+describe+the+requested+change+for+%2Fschema%2F${slug}.json`}>
-        Propose Change on GitHub
-      </a>
-    </p>
-
-    <p><a href="/models">Back to All Models</a></p>
-  </body>
-</html>
+    <h2 class="mt-12">Raw JSON</h2>
+    <pre class="bg-gray-50 p-4 rounded overflow-x-auto">
+      <code class="language-json">{JSON.stringify(model, null, 2)}</code>
+    </pre>
+  </article>
+</BaseLayout>

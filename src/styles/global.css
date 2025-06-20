@@ -21,3 +21,28 @@ li {
   padding: 1rem;
   margin-bottom: 1rem;
 }
+
+/* Landing hero styles */
+.hero {
+  background-color: #ffffff;
+}
+.search-input {
+  width: 50%;
+  max-width: 400px;
+}
+.btn-primary {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: bold;
+}
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+.btn-secondary {
+  background-color: #6b7280;
+  color: #fff;
+  font-weight: bold;
+}
+.btn-secondary:hover {
+  background-color: #4b5563;
+}

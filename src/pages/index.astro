@@ -1,23 +1,23 @@
 ---
 import BaseLayout from '../layouts/Layout.astro';
 import '../styles/global.css'
-import { getAllModels } from '../data/loadFindingModels';
-const models = getAllModels();
 ---
 <BaseLayout>
-  <h1 slot="head">All Models</h1>
-  <h1>All Models</h1>
-  <p>
-    <a href="https://github.com/openimagingdata/findingmodels" target="_blank" rel="noopener">
-      View the original Finding Models repository on GitHub
+  <section class="hero py-16 text-center">
+    <h1 class="text-4xl font-bold mb-4">Finding Models</h1>
+    <p class="max-w-2xl mx-auto mb-6">
+      Browse and explore standardized clinical data element schemas. Search, filter, and contribute to our open catalog.
+    </p>
+    <div class="space-x-4">
+      <input type="search" placeholder="Search models..." class="search-input px-4 py-2 border rounded-lg" />
+      <a href="https://fmf.oidm.org/login" target="_blank" class="btn-primary px-4 py-2 rounded-lg">Launch Finding Model Forge</a>
+      <a href="https://github.com/openimagingdata/findingmodels/issues/new?title=Submit%20Issue" target="_blank" class="btn-secondary px-4 py-2 rounded-lg">Submit Issue</a>
+    </div>
+  </section>
+  <hr class="my-12 border-gray-300" />
+  <div class="text-center py-8">
+    <a href="/models/" class="btn-primary px-6 py-3 text-lg rounded-lg">
+      Browse Finding Models
     </a>
-  </p>
-  <ul>
-    {models.map(model => (
-      <li>
-        <a href={`models/${model.slug}/`}>{model.name ?? model.slug}</a>
-      </li>
-    ))}
-  </ul>
-  <p><a href="/">Back to Home</a></p>
+  </div>
 </BaseLayout>
