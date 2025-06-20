@@ -1,23 +1,15 @@
 ---
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllModels } from '../../data/loadFindingModels';
 const models = getAllModels();
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    <title>Finding Models Home</title>
-  </head>
-  <body>
-    <h1>Welcome to Finding Models</h1>
-    <ul>
-      {models.map(model => (
-        <li>
-          <a href={`${model.slug}/`}>{model.name ?? model.slug}</a>
-        </li>
-      ))}
-    </ul>
-  </body>
-</html>
+<BaseLayout>
+  <h1 slot="head">Welcome to Finding Models</h1>
+  <ul>
+    {models.map(model => (
+      <li>
+        <a href={`${model.slug}/`}>{model.name ?? model.slug}</a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

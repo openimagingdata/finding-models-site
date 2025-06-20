@@ -1,31 +1,22 @@
---- 
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllModels } from '../data/loadFindingModels';
 const models = getAllModels();
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    <title>All Models</title>
-  </head>
-  <body>
-    <h1>All Models</h1>
-    <p>
-      <a href="https://github.com/openimagingdata/findingmodels" target="_blank" rel="noopener">
-        View the original Finding Models repository on GitHub
-      </a>
-    </p>
-    <ul>
-      {models.map(model => (
-        <li>
-          <a href={`models/${model.slug}/`}>{model.name ?? model.slug}</a>
-        </li>
-      ))}
-    </ul>
-    <p><a href="/">Back to Home</a></p>
-  </body>
-</html>
+<BaseLayout>
+  <h1 slot="head">All Models</h1>
+  <h1>All Models</h1>
+  <p>
+    <a href="https://github.com/openimagingdata/findingmodels" target="_blank" rel="noopener">
+      View the original Finding Models repository on GitHub
+    </a>
+  </p>
+  <ul>
+    {models.map(model => (
+      <li>
+        <a href={`models/${model.slug}/`}>{model.name ?? model.slug}</a>
+      </li>
+    ))}
+  </ul>
+  <p><a href="/">Back to Home</a></p>
+</BaseLayout>

@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "strict": true,
+    "noEmit": true,
+    "emitDeclarationOnly": false,
     "jsx": "preserve",
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -11,5 +13,5 @@
     "esModuleInterop": true
   },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "tailwind.config.js", "postcss.config.js", "astro.config.mjs"]
 }
