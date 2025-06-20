@@ -13,5 +13,5 @@
     "esModuleInterop": true
   },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "tailwind.config.js", "postcss.config.js", "astro.config.mjs"]
+  "exclude": ["dist", "tailwind.config.js", "postcss.config.cjs", "astro.config.mjs"]
 }
