@@ -21,7 +21,7 @@ const models = getAllModels();
     <ul>
       {models.map(model => (
         <li>
-          <a href={`/models/${model.slug}/`}>{model.name ?? model.slug}</a>
+          <a href={`models/${model.slug}/`}>{model.name ?? model.slug}</a>
         </li>
       ))}
     </ul>
